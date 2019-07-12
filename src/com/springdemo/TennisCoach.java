@@ -1,27 +1,45 @@
 package com.springdemo;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
 public class TennisCoach implements Coach {
 	
 	@Autowired
+	@Qualifier("fileFortuneService")
 	private FortuneService fortuneService;
 	
-	//define a default constructor
-	public TennisCoach() {
-		System.out.println(">>TennisCoach constructor called");
+	@Value("${foo.email}")
+	private String email;
+	
+	@Value("${foo.team}")
+	private String team;
+	
+	
+	public String getEmail() {
+		return this.email;
 	}
 	
+	public String getTeam() {
+		return this.team;
+	}
+	
+	//define a default constructor
+//	public TennisCoach() {
+//		System.out.println(">>TennisCoach constructor called");
+//	}
+//	
 //	@Autowired
-//	public TennisCoach(FortuneService theForuneService) {
+//	public TennisCoach(@Qualifier("randomFortuneService")FortuneService theForuneService) {
 //		this.fortuneService=theForuneService;
 //	}
 	
 	//define a setter method
 //	@Autowired
-//	public void setFortuneService(FortuneService theFortuneService) {
+//	public void setFortuneService(@Qualifier("happyFortuneService")FortuneService theFortuneService) {
 //		System.out.println(">>TennisCoach setter method is called.");
 //		this.fortuneService=theFortuneService;
 //	}
