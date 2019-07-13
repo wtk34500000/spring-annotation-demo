@@ -8,9 +8,17 @@ import org.springframework.stereotype.Component;
 @Component
 public class baseballCoach implements Coach {
 	
+	
+	
 	@Autowired
 	@Qualifier("happyFortuneService")
 	private FortuneService fortuneService;
+	
+	@Value("${foo.email}")
+	private String email;
+	
+	@Value("${foo.team}")
+	private String team;
 	
 	
 //	@Autowired
