@@ -1,5 +1,8 @@
 package com.springdemo;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -30,10 +33,22 @@ public class TennisCoach implements Coach {
 	}
 	
 	//define a default constructor
-//	public TennisCoach() {
-//		System.out.println(">>TennisCoach constructor called");
-//	}
-//	
+	public TennisCoach() {
+		System.out.println(">>TennisCoach constructor called");
+	}
+	
+	//define my init method
+	@PostConstruct
+	public void doMyStartupStuff() {
+		System.out.println(">> TennisCoach: inside of doMyStuff()");
+	}
+	
+	// define my destroy method
+	@PreDestroy
+	public void doMyCleanupStuff() {
+		System.out.println(">> TennisCoach: inside of doMyClearnupStuff()");
+	}
+	
 //	@Autowired
 //	public TennisCoach(@Qualifier("randomFortuneService")FortuneService theForuneService) {
 //		this.fortuneService=theForuneService;
