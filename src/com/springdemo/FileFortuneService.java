@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
+import javax.annotation.PostConstruct;
+
 import org.springframework.stereotype.Component;
 
 @Component
@@ -13,8 +15,16 @@ public class FileFortuneService implements FortuneService {
 
 	private ArrayList<String> data;
 
+	public FileFortuneService()
+	{
+		System.out.println(">>FileFortuneService:  inside default contructor");
+	}
 	
-	public FileFortuneService() {
+	@PostConstruct
+	public void FileFortuneService() {
+		
+		System.out.println(">> FileFortuneService: inisde post construct ");
+		
 		try {
 			FileReader fr=new FileReader("src/data.properties");
 			BufferedReader br = new BufferedReader(fr);
